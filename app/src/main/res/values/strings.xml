@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">DidacticHappiness</string>
+    <string name="text_button_agus">Agustin</string>
+    <string name="text_button_alberto">Larius</string>
+    <string name="text_button_alex">Epeldix</string>
+    <string name="text_button_arkaitz">Jonny Marroni</string>
+    <string name="text_button_gorka">Naveirus</string>
+
+    <string name="text_welcome_agus">Hola Agus, a ver que eres capáz de hacer majo!</string>
+    <string name="text_welcome_alberto">Hola Larius, a ver que eres capáz de hacer majo!</string>
+    <string name="text_welcome_alex">Hola Epeldix, a ver que eres capáz de hacer majo!</string>
+    <string name="text_welcome_arkaitz">Hola Jonny Marroni, a ver que eres capáz de hacer majo!</string>
+    <string name="text_welcome_gorka">Hola Naveirus, a ver que eres capáz de hacer majo!</string>
 </resources>
