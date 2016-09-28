@@ -1,4 +1,4 @@
-package io.github.epelde.didactichappiness.ui.gorka;
+package io.github.epelde.didactichappiness.ui.gorka.main;
 
 /**
  * Created by Gorka on 27/09/2016.

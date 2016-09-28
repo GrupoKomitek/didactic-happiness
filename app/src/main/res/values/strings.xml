@@ -10,5 +10,13 @@
     <string name="text_welcome_alberto">Hola Larius, a ver que eres capáz de hacer majo!</string>
     <string name="text_welcome_alex">Hola Epeldix, a ver que eres capáz de hacer majo!</string>
     <string name="text_welcome_arkaitz">Hola Jonny Marroni, a ver que eres capáz de hacer majo!</string>
+
+    <!-- Gorka's module-->
     <string name="text_welcome_gorka">Hola Naveirus, a ver que eres capáz de hacer majo!</string>
+    <string name="text_welcome_user">Bienvenido al Oráculo Discordiano, pregunta lo que desees consultar</string>
+    <string name="text_response_fun">Deja de preguntar txorradas</string>
+    <string name="text_writing_user">Venga rapidito</string>
+    <string name="text_button_go">Consultar</string>
+    <string name="text_button_back">Volver</string>
+    <!-- Gorka's module end-->
 </resources>

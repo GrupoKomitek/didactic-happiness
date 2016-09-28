@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
 
     @Override
     public void launchGorkaActivity() {
-        launchActivity(io.github.epelde.didactichappiness.ui.gorka.MainActivity.class);
+        launchActivity(io.github.epelde.didactichappiness.ui.gorka.main.MainActivity.class);
     }
 
     private void launchActivity(Class activity) {

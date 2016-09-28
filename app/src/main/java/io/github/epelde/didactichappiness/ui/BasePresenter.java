@@ -9,6 +9,9 @@ public abstract class BasePresenter<T>  {
 
     public T view;
 
+    public BasePresenter(T view){
+        attachView(view);
+    }
     void attachView(T view){
         this.view = view;
     }

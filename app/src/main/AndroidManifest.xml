@@ -20,7 +20,8 @@
         <activity android:name=".ui.alberto.MainActivity"/>
         <activity android:name=".ui.alex.MainActivity"/>
         <activity android:name=".ui.arkaitz.MainActivity"/>
-        <activity android:name=".ui.gorka.MainActivity"/>
+        <activity android:name=".ui.gorka.main.MainActivity"/>
+        <activity android:name=".ui.gorka.response.ResponseActivity"/>
     </application>
 
 </manifest>
