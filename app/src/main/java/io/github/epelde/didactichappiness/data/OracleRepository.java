@@ -6,6 +6,6 @@ package io.github.epelde.didactichappiness.data;
 public class OracleRepository implements IOracleRepository {
     @Override
     public int getResponseIdentifier() {
-        return new Double(Math.random()%10).intValue();
+        return new Double(Math.random()*5).intValue();
     }
 }

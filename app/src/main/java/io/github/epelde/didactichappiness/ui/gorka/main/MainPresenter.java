@@ -1,5 +1,6 @@
 package io.github.epelde.didactichappiness.ui.gorka.main;
 
+import io.github.epelde.didactichappiness.business.OracleProcessorInteractor;
 import io.github.epelde.didactichappiness.data.IOracleRepository;
 import io.github.epelde.didactichappiness.data.OracleRepository;
 import io.github.epelde.didactichappiness.ui.BasePresenter;
@@ -9,11 +10,11 @@ import io.github.epelde.didactichappiness.ui.BasePresenter;
  */
 public class MainPresenter extends BasePresenter<MainContract.MainView> implements MainContract.MainPresenter {
 
-    public IOracleRepository oracleRepo;
+    public OracleProcessorInteractor opi;
 
     public MainPresenter(MainContract.MainView view){
         super(view);
-        oracleRepo = new OracleRepository();
+        opi = new OracleProcessorInteractor(view.giveResponsesSet());
     }
 
     @Override
@@ -22,7 +23,8 @@ public class MainPresenter extends BasePresenter<MainContract.MainView> implemen
     }
 
     @Override
-    public void oraculoClicked() {
+    public void oraculoClicked(String question) {
 
+        view.goResponse(opi.processQuestion(question));
     }
 }

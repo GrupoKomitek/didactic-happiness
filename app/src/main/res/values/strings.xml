@@ -18,5 +18,12 @@
     <string name="text_writing_user">Venga rapidito</string>
     <string name="text_button_go">Consultar</string>
     <string name="text_button_back">Volver</string>
+    <string-array name="text_oracle_responses">
+        <item>Estás encarando mal el problema, replantea la pregunta</item>
+        <item>Vete a por ello sin dudarlo</item>
+        <item>No tienes nada que hacer</item>
+        <item>Jajajajaj No.</item>
+        <item>Que tu mente no frene a tu instinto</item>
+    </string-array>
     <!-- Gorka's module end-->
 </resources>

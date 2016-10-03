@@ -8,10 +8,12 @@ public interface MainContract {
     public interface MainView{
         void clickOraculo();
         void startTiping();
+        String[] giveResponsesSet();
+        void goResponse(String oracleMessage);
     }
 
     public interface MainPresenter{
         void onTiping();
-        void oraculoClicked();
+        void oraculoClicked(String question);
     }
 }
