@@ -70,13 +70,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     }
 
     @Override
-    public String[] giveResponsesSet() {
-        return oracle_responses;
-    }
-
-    @Override
-    public void goResponse(String oracleMessage) {
-        ResponseActivity.navigate(this,oracleMessage);
+    public void goResponse(int messageId) {
+        ResponseActivity.navigate(this,oracle_responses[messageId]);
     }
 
     @OnClick(R.id.oracle_button_consultar)

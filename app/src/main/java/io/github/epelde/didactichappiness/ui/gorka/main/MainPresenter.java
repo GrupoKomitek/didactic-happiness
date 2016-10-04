@@ -14,7 +14,7 @@ public class MainPresenter extends BasePresenter<MainContract.MainView> implemen
 
     public MainPresenter(MainContract.MainView view){
         super(view);
-        opi = new OracleProcessorInteractor(view.giveResponsesSet());
+        opi = new OracleProcessorInteractor();
     }
 
     @Override

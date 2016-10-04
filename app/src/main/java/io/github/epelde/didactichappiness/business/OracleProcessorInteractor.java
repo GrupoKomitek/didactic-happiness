@@ -9,16 +9,15 @@ import io.github.epelde.didactichappiness.data.OracleRepository;
 /**
  * Created by Gorka on 03/10/2016.
  */
-public class OracleProcessorInteractor {
+public class OracleProcessorInteractor implements IOracleProcessorInteractor{
 
-    String[] oracle_responses;
     public IOracleRepository oracleRepo;
 
-    public OracleProcessorInteractor(String[] oracle_responses){
-        this.oracle_responses = oracle_responses;
+    public OracleProcessorInteractor(){
         oracleRepo = new OracleRepository();
     }
-    public String processQuestion(String question){
-        return oracle_responses[oracleRepo.getResponseIdentifier()];
+    @Override
+    public int processQuestion(String question){
+        return oracleRepo.getResponseIdentifier();
     }
 }
