@@ -15,4 +15,9 @@ public class ResponsePresenter extends BasePresenter<ResponseContract.ResponseVi
     public void goMain() {
 
     }
+
+    @Override
+    public void detach() {
+        this.detachView();
+    }
 }

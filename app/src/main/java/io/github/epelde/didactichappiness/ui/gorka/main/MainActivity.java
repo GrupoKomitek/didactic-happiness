@@ -16,6 +16,8 @@ import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnEditorAction;
+import butterknife.OnTextChanged;
 import io.github.epelde.didactichappiness.R;
 import io.github.epelde.didactichappiness.ui.gorka.response.ResponseActivity;
 
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     @BindArray(R.array.text_oracle_responses)
     String[] oracle_responses;
 
-    MainContract.MainPresenter mainPresenter;
+    static MainContract.MainPresenter mainPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     }
 
     public static void navigate(AppCompatActivity activity) {
+        mainPresenter.detach();
         ActivityCompat.startActivity(activity, new Intent(activity,MainActivity.class), null);
     }
 
@@ -74,11 +77,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         ResponseActivity.navigate(this,oracle_responses[messageId]);
     }
 
-    @OnClick(R.id.oracle_button_consultar)
-    public void onConsultaButtonClicked(){
-
-    }
-    @OnClick(R.id.oracle_text_consulta)
+    @OnTextChanged(R.id.oracle_text_consulta)
     public void onConsultaTextClicked(){
         startTiping();
     }

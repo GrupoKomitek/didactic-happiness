@@ -12,6 +12,7 @@ public class MainPresenter extends BasePresenter<MainContract.MainView> implemen
 
     public OracleProcessorInteractor opi;
 
+    //TODO  presenter may become singleton
     public MainPresenter(MainContract.MainView view){
         super(view);
         opi = new OracleProcessorInteractor();
@@ -19,12 +20,16 @@ public class MainPresenter extends BasePresenter<MainContract.MainView> implemen
 
     @Override
     public void onTiping() {
-
     }
 
     @Override
     public void oraculoClicked(String question) {
 
         view.goResponse(opi.processQuestion(question));
+    }
+
+    @Override
+    public void detach() {
+        this.detachView();
     }
 }

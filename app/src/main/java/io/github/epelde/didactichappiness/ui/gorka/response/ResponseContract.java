@@ -10,5 +10,6 @@ public interface ResponseContract {
     }
     public interface ResponsePresenter{
         void goMain();
+        void detach();
     }
 }

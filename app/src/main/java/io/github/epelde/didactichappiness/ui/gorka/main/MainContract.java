@@ -3,46 +3,51 @@ package io.github.epelde.didactichappiness.ui.gorka.main;
 /**
  * Created by Gorka on 27/09/2016.
  *
- * Contrato para la pantalla del Oráculo en la cual se escribe la pregunta
+ * Contract for question typing screen
  */
 public interface MainContract {
 
     /**
-     * Vista para preguntar al Oráculo
+     * Oracle's question typing view
      */
     public interface MainView{
 
         /**
-         * Se clickea el botón de consulta al oráculo
+         * Oracle consulting button clicked
          */
         void clickOraculo();
 
         /**
-         * Se comienza a escribir la pregunta
+         * On start typing question
          */
         void startTiping();
 
         /**
-         * Se tiene respuesta del oráculo
+         * When Oracle's response is retrieved
          * @param messageId
          */
         void goResponse(int messageId);
     }
 
     /**
-     * Presenter para preguntar al Oráculo
+     * Presenter for asking Oracle
      */
     public interface MainPresenter{
 
         /**
-         * Se comienza a escribir la pregunta
+         * On start typing the question
          */
         void onTiping();
 
         /**
-         * Se manda una pregunta al oráculo
+         * Sends question to Oracle
          * @param question
          */
         void oraculoClicked(String question);
+
+        /**
+         * Ends the presenter/view contract
+         */
+        void detach();
     }
 }
