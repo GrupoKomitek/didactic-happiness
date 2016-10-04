@@ -20,8 +20,13 @@
         <activity android:name=".ui.alberto.MainActivity"/>
         <activity android:name=".ui.alex.MainActivity"/>
         <activity android:name=".ui.arkaitz.MainActivity"/>
-        <activity android:name=".ui.gorka.main.MainActivity"/>
-        <activity android:name=".ui.gorka.response.ResponseActivity"/>
+        <activity
+            android:name=".ui.gorka.main.MainActivity"
+            android:noHistory="true"/>
+        <activity
+            android:name=".ui.gorka.response.ResponseActivity"
+            android:noHistory="true"
+            android:parentActivityName=".ui.gorka.main.MainActivity"/>
     </application>
 
 </manifest>

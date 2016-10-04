@@ -27,8 +27,6 @@ public class ResponseActivity extends AppCompatActivity implements ResponseContr
 
 
     static final String ORACLE_MESSAGE_EXTRA_TAG = "ORACLE_MESSAGE_EXTRA_TAG";
-    @BindView(R.id.oracle_button_back)
-    public Button goBackButton;
     @BindView(R.id.oracle_text_response)
     TextView responseText;
 
@@ -57,6 +55,7 @@ public class ResponseActivity extends AppCompatActivity implements ResponseContr
     @OnClick(R.id.oracle_button_back)
     @Override
     public void onVolverClicked() {
+        resPresenter.goMain();
         MainActivity.navigate(this);
     }
 }

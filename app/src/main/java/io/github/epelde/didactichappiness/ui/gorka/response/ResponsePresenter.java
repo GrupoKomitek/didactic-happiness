@@ -13,7 +13,7 @@ public class ResponsePresenter extends BasePresenter<ResponseContract.ResponseVi
 
     @Override
     public void goMain() {
-
+    detach();
     }
 
     @Override

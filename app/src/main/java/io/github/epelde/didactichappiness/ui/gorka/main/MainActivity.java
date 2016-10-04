@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     @BindArray(R.array.text_oracle_responses)
     String[] oracle_responses;
 
-    static MainContract.MainPresenter mainPresenter;
+    MainContract.MainPresenter mainPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     }
 
     public static void navigate(AppCompatActivity activity) {
-        mainPresenter.detach();
         ActivityCompat.startActivity(activity, new Intent(activity,MainActivity.class), null);
     }
 
@@ -74,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
 
     @Override
     public void goResponse(int messageId) {
+        mainPresenter.detach();
         ResponseActivity.navigate(this,oracle_responses[messageId]);
     }
 
