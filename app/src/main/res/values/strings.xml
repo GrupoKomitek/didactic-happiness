@@ -26,4 +26,9 @@
         <item>Que tu mente no frene a tu instinto</item>
     </string-array>
     <!-- Gorka's module end-->
+
+    <!-- Alberto -->
+    <string name="imagen_cofradia">Imagen Cofradía</string>
+    <string name="escudo_cofradia">Escudo Cofradía</string>
+    <!-- End Alberto -->
 </resources>
