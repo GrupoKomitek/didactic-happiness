@@ -1,5 +1,6 @@
 package io.github.epelde.didactichappiness.ui.gorka.main;
 
+import io.github.epelde.didactichappiness.business.IOracleProcessorInteractor;
 import io.github.epelde.didactichappiness.business.OracleProcessorInteractor;
 import io.github.epelde.didactichappiness.data.IOracleRepository;
 import io.github.epelde.didactichappiness.data.OracleRepository;
@@ -10,7 +11,7 @@ import io.github.epelde.didactichappiness.ui.BasePresenter;
  */
 public class MainPresenter extends BasePresenter<MainContract.MainView> implements MainContract.MainPresenter {
 
-    public OracleProcessorInteractor opi;
+    public IOracleProcessorInteractor opi;
 
     //TODO  presenter may become singleton
     public MainPresenter(MainContract.MainView view){
