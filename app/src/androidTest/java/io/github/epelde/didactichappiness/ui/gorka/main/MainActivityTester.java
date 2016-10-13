@@ -29,7 +29,6 @@ public class MainActivityTester {
     @Test
     public void whenStartTypingTest() {
 
-
         // Comenzamos a escribir en la caja de texto.
         Espresso.onView(ViewMatchers.withId(R.id.oracle_text_consulta))
                 .perform(ViewActions.closeSoftKeyboard(), ViewActions.typeText(FIRST_CHAR), ViewActions.closeSoftKeyboard());
