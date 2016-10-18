@@ -18,13 +18,16 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnEditorAction;
 import butterknife.OnTextChanged;
+import io.github.epelde.didactichappiness.DidacticApp;
 import io.github.epelde.didactichappiness.R;
+import io.github.epelde.didactichappiness.ui.DidacticActivity;
+import io.github.epelde.didactichappiness.ui.DidacticPresenter;
 import io.github.epelde.didactichappiness.ui.gorka.response.ResponseActivity;
 
 /**
  * Created by epelde on 26/9/16.
  */
-public class MainActivity extends AppCompatActivity implements MainContract.MainView{
+public class MainActivity extends DidacticActivity<MainContract.MainPresenter> implements MainContract.MainView{
 
     @BindView(R.id.oracle_text_consulta)
     public EditText question;
@@ -39,14 +42,14 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     @BindArray(R.array.text_oracle_responses)
     String[] oracle_responses;
 
-    MainContract.MainPresenter mainPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((DidacticApp) getApplication()).getApplicationComponent().inject(this);
+        presenter.attachView(this);
         setContentView(R.layout.activity_main_gorka);
         ButterKnife.bind(this);
-        mainPresenter = new MainPresenter(this);
         init();
     }
 
@@ -62,18 +65,18 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     @OnClick(R.id.oracle_button_consultar)
     @Override
     public void clickOraculo() {
-        mainPresenter.oraculoClicked(question.getText().toString());
+        presenter.oraculoClicked(question.getText().toString());
     }
 
     @Override
     public void startTiping() {
-        mainPresenter.onTiping();
+        presenter.onTiping();
         welcomeText.setText(writingMessage);
     }
 
     @Override
     public void goResponse(int messageId) {
-        mainPresenter.detach();
+        presenter.detach();
         ResponseActivity.navigate(this,oracle_responses[messageId]);
     }
 

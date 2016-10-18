@@ -37,7 +37,8 @@ public class ResponseActivity extends AppCompatActivity implements ResponseContr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_response_gorka);
         ButterKnife.bind(this);
-        resPresenter = new ResponsePresenter(this);
+        resPresenter = new ResponsePresenter();
+        resPresenter.attachView(this);
         init(getIntent().getStringExtra(ResponseActivity.ORACLE_MESSAGE_EXTRA_TAG));
     }
 

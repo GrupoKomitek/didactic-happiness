@@ -1,16 +1,18 @@
 package io.github.epelde.didactichappiness.ui.gorka.main;
 
+import io.github.epelde.didactichappiness.ui.DidacticContract;
+
 /**
  * Created by Gorka on 27/09/2016.
  *
  * Contract for question typing screen
  */
-public interface MainContract {
+public interface MainContract extends DidacticContract{
 
     /**
      * Oracle's question typing view
      */
-    public interface MainView{
+    public interface MainView extends DidacticContract.DidacticContractView{
 
         /**
          * Oracle consulting button clicked
@@ -32,7 +34,7 @@ public interface MainContract {
     /**
      * Presenter for asking Oracle
      */
-    public interface MainPresenter{
+    public interface MainPresenter extends DidacticContract.DidacticContractPresenter{
 
         /**
          * On start typing the question
@@ -44,10 +46,5 @@ public interface MainContract {
          * @param question
          */
         void oraculoClicked(String question);
-
-        /**
-         * Ends the presenter/view contract
-         */
-        void detach();
     }
 }

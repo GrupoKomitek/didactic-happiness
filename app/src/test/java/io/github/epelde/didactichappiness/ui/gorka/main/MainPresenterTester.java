@@ -6,7 +6,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import io.github.epelde.didactichappiness.business.IOracleProcessorInteractor;
-import io.github.epelde.didactichappiness.business.OracleProcessorInteractor;
 
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
@@ -29,8 +28,9 @@ public class MainPresenterTester {
 
     @Test
     public void getResponseTest(){
-        MainPresenter mp = new MainPresenter(mv);
-        mp.opi = iopi;
+        MainPresenter mp = new MainPresenter();
+        mp.attachView(mv);
+        mp.setOpi(iopi);
         when(iopi.processQuestion(TEST_QUESTION)).thenReturn(TEST_ANSWER);
         mp.oraculoClicked(TEST_QUESTION);
         verify(iopi,atLeastOnce()).processQuestion(TEST_QUESTION);
