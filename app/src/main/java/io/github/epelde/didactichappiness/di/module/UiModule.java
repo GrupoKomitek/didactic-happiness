@@ -10,6 +10,8 @@ import io.github.epelde.didactichappiness.data.OracleRepository;
 import io.github.epelde.didactichappiness.ui.gorka.main.MainActivity;
 import io.github.epelde.didactichappiness.ui.gorka.main.MainContract;
 import io.github.epelde.didactichappiness.ui.gorka.main.MainPresenter;
+import io.github.epelde.didactichappiness.ui.gorka.response.ResponseContract;
+import io.github.epelde.didactichappiness.ui.gorka.response.ResponsePresenter;
 
 /**
  * Created by Gorka on 18/10/2016.
@@ -24,5 +26,11 @@ public class UiModule {
         MainPresenter mp = new MainPresenter();
         mp.setOpi(opi);
         return mp;
+    }
+    @Provides
+    @Singleton
+    public ResponseContract.ResponsePresenter provideResponsePresenter(){
+        ResponsePresenter rp = new ResponsePresenter();
+        return rp;
     }
 }
