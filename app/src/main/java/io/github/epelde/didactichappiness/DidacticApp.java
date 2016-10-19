@@ -22,10 +22,6 @@ public class DidacticApp extends Application {
         mApplicationComponent = DaggerApplicationComponent.create();
     }
 
-    ConnectivityManager connMgr = (ConnectivityManager)
-            getSystemService(Context.CONNECTIVITY_SERVICE);
-    NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-    boolean isConn = networkInfo.isConnected();
 
     public ApplicationComponent getApplicationComponent() {
         return mApplicationComponent;
