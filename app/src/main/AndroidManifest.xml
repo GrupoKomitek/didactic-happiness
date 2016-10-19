@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.github.epelde.didactichappiness">
 
+    <!-- Alberto's module -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Alberto's module end -->
+
     <application
         android:allowBackup="true"
         android:name=".DidacticApp"
@@ -18,7 +23,8 @@
         </activity>
 
         <activity android:name=".ui.agus.MainActivity"/>
-        <activity android:name=".ui.alberto.MainActivity"/>
+        <activity android:name=".ui.alberto.MainActivity"
+            android:parentActivityName=".ui.main.MainActivity"/>
         <activity android:name=".ui.alex.MainActivity"/>
         <activity android:name=".ui.arkaitz.MainActivity"/>
         <activity

@@ -27,8 +27,8 @@
     </string-array>
     <!-- Gorka's module end-->
 
-    <!-- Alberto -->
+    <!-- Alberto's module -->
     <string name="imagen_cofradia">Imagen Cofradía</string>
     <string name="escudo_cofradia">Escudo Cofradía</string>
-    <!-- End Alberto -->
+    <!-- Alberto's module end -->
 </resources>
