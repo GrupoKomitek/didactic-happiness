@@ -1,5 +1,7 @@
 package io.github.epelde.didactichappiness.di.module;
 
+import org.mockito.Mockito;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -13,12 +15,12 @@ import io.github.epelde.didactichappiness.data.IOracleRepository;
  */
 
 @Module
-public class BusinessModule {
+public class BusinessMockModule{
 
     @Provides
     @Singleton
     IOracleProcessorInteractor provideIOracleProcessorInteractor(IOracleRepository iOracleRepository){
-        OracleProcessorInteractor iopi = new OracleProcessorInteractor();
+        OracleProcessorInteractor iopi = Mockito.mock(OracleProcessorInteractor.class);
         iopi.setOracleRepo(iOracleRepository);
         return iopi;
     }

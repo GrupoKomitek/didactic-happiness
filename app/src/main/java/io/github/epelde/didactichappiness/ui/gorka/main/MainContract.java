@@ -25,6 +25,11 @@ public interface MainContract extends DidacticContract{
         void startTiping();
 
         /**
+         * Welcome message configuration
+         */
+        void setWelcomeText(boolean friend);
+
+        /**
          * When Oracle's response is retrieved
          * @param messageId
          */

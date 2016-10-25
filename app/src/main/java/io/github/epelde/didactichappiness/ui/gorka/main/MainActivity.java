@@ -71,7 +71,11 @@ public class MainActivity extends DidacticActivity<MainContract.MainPresenter> i
     @Override
     public void startTiping() {
         presenter.onTiping();
-        welcomeText.setText(writingMessage);
+    }
+
+    @Override
+    public void setWelcomeText(boolean friend) {
+        if(!friend)welcomeText.setText(writingMessage);
     }
 
     @Override

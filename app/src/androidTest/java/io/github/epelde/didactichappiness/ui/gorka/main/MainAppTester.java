@@ -13,14 +13,12 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
 import javax.inject.Inject;
 
-import io.github.epelde.didactichappiness.DidacticTestApp;
 import io.github.epelde.didactichappiness.DidacticApp;
 import io.github.epelde.didactichappiness.R;
 import io.github.epelde.didactichappiness.di.component.ApplicationMockComponent;
@@ -29,7 +27,8 @@ import io.github.epelde.didactichappiness.di.component.ApplicationMockComponent;
  * Created by Gorka on 05/10/2016.
  */
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTester {
+public class MainAppTester {
+
 
     private static final String FIRST_CHAR = "a";
 
@@ -40,17 +39,6 @@ public class MainActivityTester {
 
     @Test
     public void whenStartTypingActivityTest() {
-        /*
-        Vamos a conseguir que nuestro presenter mockeado no haga el ontiping(),
-        le vamos a forzar nosotros para así solo probar el activity
-         */
-       Mockito.doAnswer(new Answer() {
-           @Override
-           public Object answer(InvocationOnMock invocationOnMock) throws Throwable {
-               mGActivityRule.getActivity().setWelcomeText(false);
-               return null;
-           }
-       }).when(mGActivityRule.getActivity().presenter).onTiping();
 
         // Comenzamos a escribir en la caja de texto.
         Espresso.onView(ViewMatchers.withId(R.id.oracle_text_consulta))

@@ -1,7 +1,8 @@
 package io.github.epelde.didactichappiness.di.module;
 
 
-import javax.inject.Named;
+import org.mockito.Mockito;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -14,11 +15,11 @@ import io.github.epelde.didactichappiness.data.OracleRepository;
  */
 
 @Module
-public class DataModule {
+public class DataMockModule {
 
     @Provides
     @Singleton
     IOracleRepository provideIOracleRepository(){
-        return new OracleRepository();
+        return Mockito.mock(OracleRepository.class);
     }
 }
