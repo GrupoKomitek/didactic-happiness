@@ -1,10 +1,6 @@
 package io.github.epelde.didactichappiness;
 
 import android.app.Application;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.util.Log;
 
 import io.github.epelde.didactichappiness.di.component.ApplicationComponent;
 import io.github.epelde.didactichappiness.di.component.DaggerApplicationComponent;

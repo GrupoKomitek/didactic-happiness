@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="color_background_card_edificios">#F3E5F5</color>
+    <color name="color_text_card_edificios">#000000</color>
 </resources>

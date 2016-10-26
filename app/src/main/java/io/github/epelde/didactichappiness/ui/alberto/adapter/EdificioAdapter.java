@@ -9,6 +9,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.github.epelde.didactichappiness.R;
 import io.github.epelde.didactichappiness.data.entities.Edificio;
 
@@ -18,17 +20,18 @@ import io.github.epelde.didactichappiness.data.entities.Edificio;
 public class EdificioAdapter extends RecyclerView.Adapter<EdificioAdapter.Holder>{
 
     private static final String TAG = EdificioAdapter.class.getSimpleName();
-    private final EdificioClickListener mListener;
+    private EdificioClickListener edificioClickListener;
     private List<Edificio> mEdificios;
 
-    public EdificioAdapter(EdificioClickListener listener) {
+    @Inject
+    public EdificioAdapter() {
         mEdificios = new ArrayList<>();
-        mListener = listener;
+        //edificioClickListener = listener;
     }
 
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main_alberto_card, null, false);
+        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main_alberto_card, parent, false);
         return new Holder(row);
     }
 
@@ -55,6 +58,14 @@ public class EdificioAdapter extends RecyclerView.Adapter<EdificioAdapter.Holder
         return mEdificios.get(position);
     }
 
+    public EdificioClickListener getEdificioClickListener() {
+        return edificioClickListener;
+    }
+
+    public void setEdificioClickListener(EdificioClickListener edificioClickListener) {
+        this.edificioClickListener = edificioClickListener;
+    }
+
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView mEdificioName;
@@ -67,7 +78,7 @@ public class EdificioAdapter extends RecyclerView.Adapter<EdificioAdapter.Holder
 
         @Override
         public void onClick(View v) {
-            mListener.onClick(getLayoutPosition());
+            edificioClickListener.onClick(getLayoutPosition());
         }
     }
 

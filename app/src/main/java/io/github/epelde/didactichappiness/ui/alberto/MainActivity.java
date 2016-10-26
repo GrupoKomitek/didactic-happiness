@@ -1,21 +1,26 @@
 package io.github.epelde.didactichappiness.ui.alberto;
 
+import android.content.res.Configuration;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.epelde.didactichappiness.DidacticApp;
 import io.github.epelde.didactichappiness.R;
 import io.github.epelde.didactichappiness.data.entities.Edificio;
 import io.github.epelde.didactichappiness.ui.alberto.adapter.EdificioAdapter;
@@ -27,36 +32,33 @@ public class MainActivity  extends AppCompatActivity implements EdificioContract
         EdificioAdapter.EdificioClickListener{
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
-    private EdificioAdapter mEdificioAdapter;
-    private EdificioContract.EdificioPresenter edificioPresenter;
+    //private EdificioContract.EdificioPresenter edificioPresenter;
 
+    @Inject
+    EdificioContract.EdificioPresenter edificioPresenter;
+    @Inject
+    EdificioAdapter edificioAdapter;
+    @Inject
+    RecyclerView.RecycledViewPool recycledViewPool;
+
+    @BindView(R.id.alberto_main_loading_text)
+    TextView loadingText;
     @BindView(R.id.alberto_main_progress_bar)
     ProgressBar spinner;
-    //@BindView(R.id.alberto_main_toolbar) Toolbar toolbar;
-    //@BindView(R.id.cofradia_drawer_layout) DrawerLayout drawer;
-    //@BindView(R.id.cofradia_navigation_view) NavigationView navigationView;
     @BindView(R.id.alberto_main_recycler_view)
     RecyclerView mRecyclerView;
-    @BindView(R.id.home_top_imagen)
-    ImageView mTopImagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_alberto);
+
+        ((DidacticApp) getApplication()).getApplicationComponent().inject(this);
+
         ButterKnife.bind(this);
         Firebase.setAndroidContext(this);
 
-        //setSupportActionBar(toolbar);
-
-        //ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        //drawer.addDrawerListener(toggle);
-        //toggle.syncState();
-
-        //navigationView.setItemIconTintList(null);
-        //navigationView.setNavigationItemSelectedListener(this);
-
-        Log.d(LOG_TAG, "initRecyclerViewCofradias");
+        Log.d(LOG_TAG, "initRecyclerViewEdificios");
         initRecyclerViewEdificios();
 
         Log.d(LOG_TAG, "initPresenter");
@@ -78,11 +80,12 @@ public class MainActivity  extends AppCompatActivity implements EdificioContract
     @Override
     public void setSpinner(boolean loadingSpinner) {
         spinner.setVisibility(loadingSpinner? View.VISIBLE : View.GONE);
+        loadingText.setVisibility(loadingSpinner? View.VISIBLE : View.GONE);
     }
 
     @Override
     public void printEdificios(ObservableArrayList<Edificio> mEdificios) {
-        Log.d(LOG_TAG, "PINTANDO EDIFICIOS (printCofradias): "+mEdificios.size()+" ELEMENTOS");
+        Log.d(LOG_TAG, "PINTANDO EDIFICIOS (printEdificios): "+mEdificios.size()+" ELEMENTOS");
         ((EdificioAdapter) mRecyclerView.getAdapter()).addEdificios(mEdificios);
     }
 
@@ -94,15 +97,19 @@ public class MainActivity  extends AppCompatActivity implements EdificioContract
 
     private void initRecyclerViewEdificios() {
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setRecycledViewPool(new RecyclerView.RecycledViewPool());
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        if (getScreenOrientation().equals("Landscrape")) {
+            mRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
+        }else{
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        }
+        mRecyclerView.setRecycledViewPool(recycledViewPool);
 
-        mEdificioAdapter = new EdificioAdapter(this);
-        mRecyclerView.setAdapter(mEdificioAdapter);
+        edificioAdapter.setEdificioClickListener(this);
+        mRecyclerView.setAdapter(edificioAdapter);
     }
 
     private void initPresenter() {
-        edificioPresenter = new EdificioPresenter();
+        //edificioPresenter = new EdificioPresenter();
         edificioPresenter.attachEdificioView(this);
         edificioPresenter.initPresenter();
     }
@@ -114,10 +121,33 @@ public class MainActivity  extends AppCompatActivity implements EdificioContract
         finish();
     }
 
+/*    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_LONG).show();
+
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
+    }*/
+
+    private String getScreenOrientation() {
+        int orientation = getResources().getConfiguration().orientation;
+        String screenOrientation = "";
+        switch (orientation) {
+            case Configuration.ORIENTATION_UNDEFINED: screenOrientation = "Undefined"; break;
+            case Configuration.ORIENTATION_LANDSCAPE: screenOrientation = "Landscrape"; break;
+            case Configuration.ORIENTATION_PORTRAIT:  screenOrientation = "Portrait"; break;
+        }
+        //Toast.makeText(this, screenOrientation, Toast.LENGTH_LONG).show();
+        return screenOrientation;
+    }
 
     @Override
     public void onClick(int position) {
-        //Edificio selectedEdificio = mEdificioAdapter.getSelectedEdificio(position);
+        //Edificio selectedEdificio = edificioAdapter.getSelectedEdificio(position);
         //Intent intent = new Intent(MainActivity.this, DetailMainActivity.class);
         //intent.putExtra(Constants.REFERENCE.EDIFICIO, selectedEdificio);
         //startActivity(intent);

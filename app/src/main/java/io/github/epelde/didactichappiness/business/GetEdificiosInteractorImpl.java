@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.epelde.didactichappiness.data.FirebaseAccess;
-import io.github.epelde.didactichappiness.data.FirebaseDataAccess;
 import io.github.epelde.didactichappiness.data.entities.Edificio;
 import rx.Observable;
 
@@ -23,9 +22,10 @@ public class GetEdificiosInteractorImpl implements GetEdificiosInteractor {
 
     private List<Edificio> listaEdificios;
 
-    public GetEdificiosInteractorImpl() {
+    public GetEdificiosInteractorImpl(FirebaseAccess firebaseAccess) {
 
-        this.firebaseAccess = new FirebaseDataAccess();
+        //this.firebaseAccess = new FirebaseDataAccess();
+        this.firebaseAccess = firebaseAccess;
         listaEdificios = new ArrayList();
     }
 

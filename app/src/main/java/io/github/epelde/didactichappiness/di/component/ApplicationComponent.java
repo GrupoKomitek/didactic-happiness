@@ -6,8 +6,6 @@ import dagger.Component;
 import io.github.epelde.didactichappiness.di.module.BusinessModule;
 import io.github.epelde.didactichappiness.di.module.DataModule;
 import io.github.epelde.didactichappiness.di.module.UiModule;
-import io.github.epelde.didactichappiness.ui.DidacticActivity;
-import io.github.epelde.didactichappiness.ui.DidacticContract;
 import io.github.epelde.didactichappiness.ui.gorka.main.MainActivity;
 import io.github.epelde.didactichappiness.ui.gorka.response.ResponseActivity;
 
@@ -19,4 +17,6 @@ import io.github.epelde.didactichappiness.ui.gorka.response.ResponseActivity;
 public interface ApplicationComponent {
     void inject(MainActivity activity);
     void inject(ResponseActivity activity);
+
+    void inject(io.github.epelde.didactichappiness.ui.alberto.MainActivity activity);
 }

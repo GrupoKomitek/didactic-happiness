@@ -24,9 +24,10 @@ public class EdificioPresenter implements EdificioContract.EdificioPresenter {
     private ObservableArrayList<Edificio> listaEdificios;
     private ObservableField<String> mensajeError;
 
-    public EdificioPresenter() {
+    public EdificioPresenter(GetEdificiosInteractorImpl getEdificiosInteractor) {
 
-        getEdificiosInteractor = new GetEdificiosInteractorImpl();
+        //getEdificiosInteractor = new GetEdificiosInteractorImpl();
+        this.getEdificiosInteractor = getEdificiosInteractor;
         listaEdificios = new ObservableArrayList();
         mensajeError = new ObservableField();
     }
@@ -62,7 +63,6 @@ public class EdificioPresenter implements EdificioContract.EdificioPresenter {
             this.edificioView.setSpinner(loadingSpinner);
         }
     }
-
 
     private Subscriber subscriber = new Subscriber<DataSnapshot>() {
         @Override

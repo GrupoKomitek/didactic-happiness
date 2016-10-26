@@ -30,5 +30,6 @@
     <!-- Alberto's module -->
     <string name="imagen_cofradia">Imagen Cofradía</string>
     <string name="escudo_cofradia">Escudo Cofradía</string>
+    <string name="cargando_edificios">Cargando Edificios</string>
     <!-- Alberto's module end -->
 </resources>

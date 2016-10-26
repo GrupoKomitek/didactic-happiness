@@ -4,6 +4,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.github.epelde.didactichappiness.data.FirebaseAccess;
+import io.github.epelde.didactichappiness.data.FirebaseDataAccess;
 import io.github.epelde.didactichappiness.data.IOracleRepository;
 import io.github.epelde.didactichappiness.data.OracleRepository;
 
@@ -19,4 +21,11 @@ public class DataModule {
     IOracleRepository provideIOracleRepository(){
         return new OracleRepository();
     }
+
+    @Singleton
+    @Provides
+    public FirebaseAccess provideFirebaseDataAccess() {
+        return new FirebaseDataAccess();
+    }
+
 }
