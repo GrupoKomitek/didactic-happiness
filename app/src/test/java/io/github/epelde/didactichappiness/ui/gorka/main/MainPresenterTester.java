@@ -1,10 +1,14 @@
 package io.github.epelde.didactichappiness.ui.gorka.main;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import javax.inject.Inject;
+
+import dagger.internal.DaggerCollections;
+import io.github.epelde.didactichappiness.DidacticApp;
 import io.github.epelde.didactichappiness.business.IOracleProcessorInteractor;
 
 import static org.mockito.Mockito.atLeastOnce;
@@ -21,10 +25,16 @@ public class MainPresenterTester {
     private static final String TEST_QUESTION = "Do I have to commite suicide?";
     private static final int TEST_ANSWER = 1;
 
-    @Mock
+    @Inject
     MainContract.MainView mv;
-    @Mock
+    @Inject
     IOracleProcessorInteractor iopi;
+
+    @Before
+    public void setUp() {
+        //MockComponent mc;
+        //mc.inject(this);
+    }
 
     @Test
     public void getResponseTest(){

@@ -1,13 +1,13 @@
 package io.github.epelde.didactichappiness.di.module;
 
+import org.mockito.Mockito;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import io.github.epelde.didactichappiness.business.GetEdificiosInteractorImpl;
 import io.github.epelde.didactichappiness.business.IOracleProcessorInteractor;
 import io.github.epelde.didactichappiness.business.OracleProcessorInteractor;
-import io.github.epelde.didactichappiness.data.FirebaseAccess;
 import io.github.epelde.didactichappiness.data.IOracleRepository;
 
 /**
@@ -15,19 +15,13 @@ import io.github.epelde.didactichappiness.data.IOracleRepository;
  */
 
 @Module
-public class BusinessModule {
+public class BusinessMockModule{
 
     @Provides
     @Singleton
     IOracleProcessorInteractor provideIOracleProcessorInteractor(IOracleRepository iOracleRepository){
-        OracleProcessorInteractor iopi = new OracleProcessorInteractor();
+        OracleProcessorInteractor iopi = Mockito.mock(OracleProcessorInteractor.class);
         iopi.setOracleRepo(iOracleRepository);
         return iopi;
-    }
-
-    @Singleton
-    @Provides
-    public GetEdificiosInteractorImpl provideGetEdificiosInteractorImpl(FirebaseAccess firebaseAccess) {
-        return new GetEdificiosInteractorImpl(firebaseAccess);
     }
 }

@@ -18,7 +18,6 @@ public class DidacticApp extends Application {
         mApplicationComponent = DaggerApplicationComponent.create();
     }
 
-
     public ApplicationComponent getApplicationComponent() {
         return mApplicationComponent;
     }

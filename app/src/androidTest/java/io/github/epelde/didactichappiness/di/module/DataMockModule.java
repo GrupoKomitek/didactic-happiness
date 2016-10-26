@@ -1,13 +1,12 @@
 package io.github.epelde.didactichappiness.di.module;
 
 
-import javax.inject.Named;
+import org.mockito.Mockito;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import io.github.epelde.didactichappiness.data.FirebaseAccess;
-import io.github.epelde.didactichappiness.data.FirebaseDataAccess;
 import io.github.epelde.didactichappiness.data.IOracleRepository;
 import io.github.epelde.didactichappiness.data.OracleRepository;
 
@@ -16,18 +15,11 @@ import io.github.epelde.didactichappiness.data.OracleRepository;
  */
 
 @Module
-public class DataModule {
+public class DataMockModule {
 
     @Provides
     @Singleton
     IOracleRepository provideIOracleRepository(){
-        return new OracleRepository();
+        return Mockito.mock(OracleRepository.class);
     }
-
-    @Singleton
-    @Provides
-    public FirebaseAccess provideFirebaseDataAccess() {
-        return new FirebaseDataAccess();
-    }
-
 }

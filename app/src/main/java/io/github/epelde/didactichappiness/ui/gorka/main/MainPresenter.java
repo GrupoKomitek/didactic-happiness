@@ -16,12 +16,13 @@ public class MainPresenter extends DidacticPresenter<MainContract.MainView> impl
 
     @Override
     public void onTiping() {
+        view.setWelcomeText(false);
     }
 
     @Override
     public void oraculoClicked(String question) {
 
-        view.goResponse(getOpi().processQuestion(question));
+        view.goResponse(opi.processQuestion(question));
     }
 
     @Override

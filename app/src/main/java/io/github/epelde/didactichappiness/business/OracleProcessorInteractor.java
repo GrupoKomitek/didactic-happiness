@@ -1,8 +1,5 @@
 package io.github.epelde.didactichappiness.business;
 
-import butterknife.BindArray;
-import butterknife.ButterKnife;
-import io.github.epelde.didactichappiness.R;
 import io.github.epelde.didactichappiness.data.IOracleRepository;
 import io.github.epelde.didactichappiness.data.OracleRepository;
 
@@ -11,13 +8,21 @@ import io.github.epelde.didactichappiness.data.OracleRepository;
  */
 public class OracleProcessorInteractor implements IOracleProcessorInteractor{
 
-    public IOracleRepository oracleRepo;
+    private IOracleRepository oracleRepo;
 
     public OracleProcessorInteractor(){
-        oracleRepo = new OracleRepository();
+        setOracleRepo(new OracleRepository());
     }
     @Override
     public int processQuestion(String question){
-        return oracleRepo.getResponseIdentifier();
+        return getOracleRepo().getResponseIdentifier();
+    }
+
+    public IOracleRepository getOracleRepo() {
+        return oracleRepo;
+    }
+
+    public void setOracleRepo(IOracleRepository oracleRepo) {
+        this.oracleRepo = oracleRepo;
     }
 }
