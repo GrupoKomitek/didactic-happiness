@@ -6,6 +6,8 @@ import android.support.test.runner.AndroidJUnitRunner;
 
 /**
  * Created by Gorka on 25/10/2016.
+ *
+ * Lanza el entorno de aplicación necesario para el testeo
  */
 public class DidacticTestRunner extends AndroidJUnitRunner {
     @Override
